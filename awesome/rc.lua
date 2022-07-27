@@ -53,7 +53,7 @@ end
 
 -- {{{ VARIABLES
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "dracula.lua")
 terminal = "kitty"
 editor = "nvim" or "vi" or os.getenv("EDITOR")
 editor_cmd = terminal .. " -e " .. editor
@@ -66,8 +66,7 @@ volume_mute = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 volume_mic_mute = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 brightness_up = "brightnessctl set +10%"
 brightness_down = "brightnessctl set 10%-"
-startup_app = { "clipit", "picom", "redshift -P -l 39.2:-86.5 -t 5600:3500 -m randr", "dunst",
-                "feh --no-fehbg --bg-fill /home/theopn/dotfiles_images/2008-09-28_SingaporeGP_LH-Nord.jpg",
+startup_app = { "clipit", "picom", "redshift -P -l 39.2:-86.5 -t 5600:3500 -m randr",
               }
 startup_settings = { "xss-lock --transfer-sleep-lock -- ~/dotfiles/i3/i3_system_mode.sh lock --nofork",
                      "setxkbmap -option ctrl:swapcaps",
@@ -541,6 +540,7 @@ client.connect_signal("manage", function (c)
     end
 end)
 
+--[[
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
@@ -580,6 +580,7 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal
     }
 end)
+--]]
 
 --[[ Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
@@ -593,7 +594,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --]]
 
 ---[[ Gaps
-beautiful.useless_gap = 3
+--beautiful.useless_gap = 3
 --]]
 
 ---[[ Startup Applications
