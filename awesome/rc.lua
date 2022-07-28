@@ -26,8 +26,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 -- }}}
 
----[[ Custom libaries
---]]
+--{{{ Custom libaries
+-- }}}
 
 -- {{{ Error handling
 if awesome.startup_errors then
@@ -53,7 +53,7 @@ end
 
 -- {{{ VARIABLES
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_configuration_dir() .. "dracula.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/dracula.lua")
 terminal = "kitty"
 editor = "nvim" or "vi" or os.getenv("EDITOR")
 editor_cmd = terminal .. " -e " .. editor
@@ -95,7 +95,7 @@ awful.layout.layouts = {
 }
 -- }}}
 
----[[Menu
+--{{{ Menu
 myawesomemenu = {
  { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
  { "manual", terminal .. " -e man awesome" },
@@ -110,7 +110,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
---]]
+-- }}}
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -220,7 +220,14 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            require("battery-widget") {},
+            require("widgets/cpu") {},
+            require("widgets/brightness") {
+              type = "icon_and_text",
+              program = "brightnessctl",
+              timeout = 1,
+              percentage = true,
+            },
+            require("widgets/battery-widget") {},
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -569,12 +576,12 @@ client.connect_signal("mouse::enter", function(c)
 end)
 --]]
 
----[[ Active window border
+--{{{  Active window border
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus c.opacity = 1 end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal c.opacity = 0.8 end)
---]]
+-- }}}
 
----[[ Startup Applications
+--{{{  Startup Applications
 for _,v in ipairs(startup_app) do
   awful.spawn.with_shell(v)
 end
@@ -582,5 +589,5 @@ end
 for _,v in ipairs(startup_settings) do
   awful.spawn.with_shell(v)
 end
---]]
+-- }}}
 
