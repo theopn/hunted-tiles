@@ -21,13 +21,13 @@ globalkeys = gears.table.join(
   awful.key({}, "XF86AudioRaiseVolume", function ()
    awful.util.spawn(volume_up, false) end, { description = "Raise Volume", group = "system" }),
   awful.key({}, "XF86AudioMute", function ()
-   awful.util.spawn(volume_mute, false) end, { description = "I will just stop explaining", group = "system" }),
+   awful.util.spawn(volume_mute, false) end, { description = "Mute Audio Output", group = "system" }),
   awful.key({}, "XF86AudioMicMute", function ()
-   awful.util.spawn(volume_mic_mute, false) end, { description = "^", group = "system" }),
+   awful.util.spawn(volume_mic_mute, false) end, { description = "Mute Audio Input", group = "system" }),
   awful.key({}, "XF86MonBrightnessUp", function ()
-   awful.util.spawn(brightness_up, false) end, { description = "^", group = "system" }),
+   awful.util.spawn(brightness_up, false) end, { description = "Increase Brightness", group = "system" }),
   awful.key({}, "XF86MonBrightnessDown", function ()
-   awful.util.spawn(brightness_down, false) end, { description = "^", group = "system" }),
+   awful.util.spawn(brightness_down, false) end, { description = "Decrease Brightness", group = "system" }),
 
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
@@ -112,8 +112,6 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.util.spawn(menu) end,
-              {description = "Launch Rofi Dmenu", group = "Theo Custom Settings"}),
-    awful.key({ modkey },            "space",     function () awful.util.spawn(menu) end,
               {description = "Launch Rofi Dmenu", group = "Theo Custom Settings"}),
 
     awful.key({ modkey }, "x",

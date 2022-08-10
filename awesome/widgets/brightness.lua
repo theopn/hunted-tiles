@@ -103,7 +103,7 @@ local function worker(user_args)
                 valign = 'center',
                 layout = wibox.container.place
             },
-            max_value = 100,
+            max_value = 852,
             thickness = 2,
             start_angle = 4.71238898, -- 2pi*3/4
             forced_height = 18,

@@ -113,8 +113,9 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             require("widgets/cpu") {},
             require("widgets/brightness") {
-              type = "icon_and_text",
+              type = "arc",
               program = "brightnessctl",
+              step = 10,
               timeout = 1,
               percentage = true,
             },
