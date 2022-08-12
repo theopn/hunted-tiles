@@ -139,7 +139,7 @@ function battery_widget:init(args)
     }
 
     self.widget_text = args.widget_text or (
-        "${AC_BAT}${color_on}${percent}% | ${color_off}")
+        "${AC_BAT}${color_on}${percent}%${color_off}")
     self.tooltip_text = args.tooltip_text or (
         "Battery ${state}${time_est}\nCapacity: ${capacity_percent}%")
 

@@ -6,10 +6,28 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 
--- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+--- {{{ Widget List
+local reverse_powerline = function(cr, width, height)
+  gears.shape.powerline(cr, width + 5, height, -20)
+end
 
+local mycpu = require("widgets/cpu") {}
+local mybrightness = require("widgets/brightness") {
+                       type = "arc",
+                       program = "brightnessctl",
+                       step = 10,
+                       timeout = 1,
+                       percentage = true,
+                     }
+local mybattery = require("widgets/battery-widget") {}
+local net_widget = require("net-widgets.wireless") {interface = "wlp4s0"}
+--local net_widgets = require("net_widgets")
+--net_wireless = net_widgets.wireless({interface="wlp1s0"})
+mytextclock = wibox.widget.textclock()
+local myweather = require("widgets/weather-widget")
+--}}}
+
+-- {{{ Wibar
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -86,7 +104,17 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = taglist_buttons,
+        style = { shape = gears.shape.powerline },
+        layout   = {
+          spacing = 12,
+          spacing_widget = {
+            color  = '#dddddd',
+            shape  = gears.shape.powerline,
+            widget = wibox.widget.separator,
+          },
+          layout  = wibox.layout.fixed.horizontal
+        },
     }
 
     -- Create a tasklist widget
@@ -97,7 +125,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, opacity = 0.6 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, opacity = 0.6, })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -108,23 +136,26 @@ awful.screen.connect_for_each_screen(function(s)
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
+        { layout = wibox.layout.fixed.horizontal,
+          --s.mytasklist, -- Middle widget
+        },
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            require("widgets/cpu") {},
-            require("widgets/brightness") {
-              type = "arc",
-              program = "brightnessctl",
-              step = 10,
-              timeout = 1,
-              percentage = true,
-            },
-            require("widgets/battery-widget") {},
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            require("widgets/weather-widget"),
-            s.mylayoutbox,
+          layout = wibox.layout.fixed.horizontal,
+          spacing_widget = {
+            color  = '#dddddd',
+            shape = reverse_powerline,
+            widget = wibox.widget.separator,
+          },
+          spacing = 16,
+
+          mycpu,
+          mybrightness,
+          mybattery,
+          wibox.widget.systray(),
+          net_widget,
+          mytextclock,
+          myweather,
+          s.mylayoutbox,
         },
     }
 end)
