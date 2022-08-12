@@ -20,7 +20,7 @@ local mybrightness = require("widgets/brightness") {
                        percentage = true,
                      }
 local mybattery = require("widgets/battery-widget") {}
-local net_widget = require("net-widgets.wireless") {interface = "wlp4s0"}
+local net_widget = require("widgets.net-widgets.wireless") {interface = "wlp4s0"}
 --local net_widgets = require("net_widgets")
 --net_wireless = net_widgets.wireless({interface="wlp1s0"})
 mytextclock = wibox.widget.textclock()
@@ -103,14 +103,13 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
-        filter  = awful.widget.taglist.filter.all,
+        filter  = awful.widget.taglist.filter.noempty,
         buttons = taglist_buttons,
-        style = { shape = gears.shape.powerline },
         layout   = {
           spacing = 12,
           spacing_widget = {
             color  = '#dddddd',
-            shape  = gears.shape.powerline,
+            shape  = gears.shape.bar,
             widget = wibox.widget.separator,
           },
           layout  = wibox.layout.fixed.horizontal
@@ -131,14 +130,28 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
+          layout = wibox.layout.fixed.horizontal,
+          spacing_widget = {
+            color  = '#dddddd',
+            shape = gears.shape.powerline,
+            widget = wibox.widget.separator,
+          },
+          spacing = 12,
+
+          layout = wibox.layout.fixed.horizontal,
+          mylauncher,
+          wibox.widget.systray(),
+          mycpu,
+          s.mypromptbox,
         },
-        { layout = wibox.layout.fixed.horizontal,
-          --s.mytasklist, -- Middle widget
+
+        { -- Middle widget
+          valign = "center",
+          halign = "center",
+          layout = wibox.container.place,
+          s.mytaglist,
         },
+
         { -- Right widgets
           layout = wibox.layout.fixed.horizontal,
           spacing_widget = {
@@ -148,10 +161,8 @@ awful.screen.connect_for_each_screen(function(s)
           },
           spacing = 16,
 
-          mycpu,
           mybrightness,
           mybattery,
-          wibox.widget.systray(),
           net_widget,
           mytextclock,
           myweather,
