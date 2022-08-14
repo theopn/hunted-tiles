@@ -11,24 +11,24 @@ local reverse_powerline = function(cr, width, height)
   gears.shape.powerline(cr, width + 5, height, -20)
 end
 
-local mycpu = require("widgets.cpu-widget") {}
+local mycpu = require("widgets.cpu") {}
 local mymemory = awful.widget.watch('bash -c "free -h | awk \'/^Mem/ {print $3}\'"', 15)
 
-local myspotify = require("widgets.spotify-widget")
-local myvolume = require("widgets.volume-widget")
-local mybrightness = require("widgets.brightness-widget") {
+local myspotify = require("widgets.spotify")
+local myvolume = require("widgets.volume")
+local mybrightness = require("widgets.brightness") {
   type = "arc",
   program = "brightnessctl",
   step = 10,
   timeout = 1,
   percentage = true,
 }
-local mybattery = require("widgets.battery-widget") {}
+local mybattery = require("widgets.battery") {}
 local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0" }
 --local net_widgets = require("net_widgets")
 --net_wireless = net_widgets.wireless({interface="wlp1s0"})
-local mytextclock = wibox.widget.textclock()
-local myweather = require("widgets.weather-widget")
+local mytextclock = require("widgets.clock")
+local myweather = require("widgets.weather")
 --}}}
 
 -- {{{ Wibar
@@ -154,7 +154,8 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   -- Create the wibox
-  s.mywibox = awful.wibar({ position = "top", screen = s, opacity = 0.6, })
+  s.mywibox = awful.wibar({ position = "top", screen = s, opacity = 0.8, shape = gears.shape.rounded_bar, height = 30,
+    stretch = true, border_width = 5, })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
