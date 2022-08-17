@@ -4,6 +4,8 @@ Window manager configuration? More like a software engineering project.
 
 ## Dependencies
 
+### Startup
+
 - Clipit: Clipboard manager
 - i3lock: Simple lock screen for X11
 - **Picom: Compositor for X11**

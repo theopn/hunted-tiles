@@ -23,8 +23,9 @@ local mybrightness = require("widgets.brightness") {
   timeout = 1,
   percentage = true,
 }
+local mybrightness = require("widgets.brightness-test") {}
 local mybattery = require("widgets.battery") {}
-local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0" }
+local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0", popup_position = "top_middle", }
 --local net_widgets = require("net_widgets")
 --net_wireless = net_widgets.wireless({interface="wlp1s0"})
 local mytextclock = require("widgets.clock")
