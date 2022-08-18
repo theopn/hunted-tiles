@@ -60,9 +60,9 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 --]]
-theme.awesome_icon        = gfs.get_configuration_dir() .. "themes/cat_icon.png"
-theme.awesome_icon_height = dpi(20)
-theme.awesome_icon__width = dpi(100)
+theme.awesome_icon        = gfs.get_configuration_dir() .. "themes/logo.png"
+theme.awesome_icon_height = dpi(40)
+theme.awesome_icon_width  = dpi(200)
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
