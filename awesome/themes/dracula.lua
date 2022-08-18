@@ -50,7 +50,7 @@ theme.notification_fg = "#f8f8f2"
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path .. "default/submenu.png"
-theme.menu_height       = dpi(15)
+theme.menu_height       = dpi(20)
 theme.menu_width        = dpi(100)
 
 theme.wallpaper = gfs.get_configuration_dir() .. "themes/wallpaper.png"
