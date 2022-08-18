@@ -24,7 +24,7 @@ local function worker(user_args)
   local type = 'arc'
   local path_to_icon = args.path_to_icon or ICON_DIR .. 'brightness-icon.svg'
   local font = args.font or beautiful.font
-  local timeout = args.timeout or 5
+  local timeout = args.timeout or 1
 
   local step = args.step or 10
   local base = args.base or 20

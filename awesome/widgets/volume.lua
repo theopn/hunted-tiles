@@ -8,7 +8,9 @@ local function update_volume(widget)
   local fd = io.popen("pactl get-sink-mute @DEFAULT_SINK@")
   local status = fd:read("*all")
 
-  if (status:find("yes")) then
+  if (fd == nil or status == nil or status == "") then
+    volume = " PulseAudio Error"
+  elseif (status:find("yes")) then
     volume = " MUTED "
   else
     fd = io.popen("pactl get-sink-volume @DEFAULT_SINK@")
