@@ -6,15 +6,16 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 modkey = "Mod4"
 
+local brightness_up = "brightnessctl set +10%"
+local brightness_down = "brightnessctl set 10%-"
 local menu = "rofi -modi drun,run -show drun"
+local powermenu = "hunted-tiles/scripts/rofi-powermenu.sh"
+local quicknote = "kitty --class=quicknote vim ~/Documents/awesomewm_quicknote.txt"
+local screenshot = "flameshot launcher"
 local volume_up = "pactl set-sink-volume @DEFAULT_SINK@ +10%"
 local volume_down = "pactl set-sink-volume @DEFAULT_SINK@ -10%"
 local volume_mute = "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 local volume_mic_mute = "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-local brightness_up = "brightnessctl set +10%"
-local brightness_down = "brightnessctl set 10%-"
-local screenshot = "flameshot launcher"
-local quicknote = "kitty --class=quicknote vim ~/Documents/awesomewm_quicknote.txt"
 
 -- {{{ Custom Key Bindings
 globalkeys = gears.table.join(
@@ -44,8 +45,8 @@ globalkeys = gears.table.join(
   awful.key({ modkey, "Shift" }, "n", function() awful.util.spawn(quicknote) end,
     { description = "Launch Vim Quick Note", group = "Theo Custom Settings" }),
 
-  awful.key({ modkey, "Shift" }, "c", awesome.quit,
-    { description = "quit awesome", group = "awesome" }),
+  awful.key({ modkey, "Shift" }, "c", function() awful.util.spawn(powermenu) end,
+    { description = "Open power menu", group = "awesome" }),
   -- }}}
 
   -- {{{ Unmodified Keybindings

@@ -32,9 +32,11 @@ Hunted Tiles is a aspiring desktop environment built with [Awesome WM framework]
 ## TO-DO
 
 - [ ] Installation script
+- [ ] Script folder location
 - [ ] Do not disturb toggle
 - [ ] Redshift toggle
-- [ ] Rofi power menu
+- [X] Rofi power menu
+- [ ] Widget for `awesome.quit()` and `awesome.restart()`
 - [ ] Consistency between brightness and volume widget
 - [ ] Vim quick note access widget
 - [ ] Vim/Neovim configuration

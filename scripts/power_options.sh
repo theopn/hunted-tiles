@@ -1,8 +1,8 @@
 #!/bin/sh
 lock() {
-  if [ -d "$HOME/myawesomeconfig/scripts" ]
+  if [ -d "$HOME/hunted-tiles/scripts" ]
   then
-    i3lock -i ~/myawesomeconfig/scripts/naomi_solarsys-dracula_i3lock.png
+    i3lock -i ~/hunted-tiles/scripts/naomi_solarsys-dracula_i3lock.png
   else
     i3lock -c "#282a36"
   fi
