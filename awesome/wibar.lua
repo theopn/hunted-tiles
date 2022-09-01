@@ -30,6 +30,7 @@ local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0
 --net_wireless = net_widgets.wireless({interface="wlp1s0"})
 local mytextclock = require("widgets.clock")
 local myweather = require("widgets.weather")
+local mydnd = require("widgets.do_not_disturb")
 --}}}
 
 -- {{{ Wibar
@@ -198,6 +199,7 @@ awful.screen.connect_for_each_screen(function(s)
       mybattery,
       mytextclock,
       myweather,
+      mydnd,
       s.mylayoutbox,
     },
   }
