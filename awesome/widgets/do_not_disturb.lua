@@ -11,7 +11,7 @@ dnd_text:connect_signal("button::press",
   function()
     naughty.toggle()
     if (not naughty.is_suspended()) then
-      awful.spawn.with_shell("notify-send 'Do Not Disturb Off'")
+      naughty.notify({ text = "Do Not Disturb Off", position = "top_middle" })
     end
   end
 )

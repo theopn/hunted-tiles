@@ -1,9 +1,7 @@
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
--- Widget and layout library
 local wibox = require("wibox")
--- Theme handling library
 local beautiful = require("beautiful")
 
 --- {{{ Widget List
@@ -12,7 +10,7 @@ local reverse_powerline = function(cr, width, height)
 end
 
 local mycpu = require("widgets.cpu") {}
-local mymemory = awful.widget.watch('bash -c "free -h | awk \'/^Mem/ {print $3}\'"', 15)
+local mymemory = require("widgets.memory")
 
 local myspotify = require("widgets.spotify")
 local myvolume = require("widgets.volume")
@@ -28,9 +26,10 @@ local mybattery = require("widgets.battery") {}
 local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0", popup_position = "top_middle", }
 --local net_widgets = require("net_widgets")
 --net_wireless = net_widgets.wireless({interface="wlp1s0"})
-local mytextclock = require("widgets.clock")
+local myclock = require("widgets.clock")
 local myweather = require("widgets.weather")
 local mydnd = require("widgets.do_not_disturb")
+local mypower = require("widgets.power_menu")
 --}}}
 
 -- {{{ Wibar
@@ -197,9 +196,10 @@ awful.screen.connect_for_each_screen(function(s)
       myvolume,
       mybrightness,
       mybattery,
-      mytextclock,
+      myclock,
       myweather,
       mydnd,
+      mypower,
       s.mylayoutbox,
     },
   }
