@@ -1,6 +1,10 @@
 # Hunted Tiles
 
-Hunted Tiles is a aspiring desktop environment built with [Awesome WM framework](https://awesomewm.org/) and other tools surrounding X11 window server to provide a simple yet powerful dynamic tiling window manager environment. The goal of the project is to reduce the number of dependencies and startup memory usage as much as possible while providing all the necessary tools and information to the user.
+Hunted Tiles is a custom Linux window manager environment built with [Awesome WM framework](https://awesomewm.org/) and other tools surrounding the X11 window server. The goal of Hunted Tiles is a complete, lightweight, and aesthetically pleasing desktop environment that provides users freedom of dependency choice and an easily modifiable code base. The name “Hunted Tiles” was inspired by my favorite color scheme (and the main theme of Hunted Tiles), [Dracula](https://draculatheme.com), and the fact that AwesomeWM is a tiling WM.
+
+## Aesthetics
+
+The central theme of Hunted Tiles is heavily inspired by the [Dracula color palette](https://draculatheme.com/contribute). The artworks (wallpaper and the icon) were done by Naomi Lynn (thanks Naomi)!
 
 ## Screenshots
 
@@ -24,22 +28,24 @@ Hunted Tiles is a aspiring desktop environment built with [Awesome WM framework]
 
 - kitty: Terminal emulator
 - Ranger: TUI file manager
-- Rofi: Pop-up launcher for window switching, app launcher, etc
+- Rofi: Pop-up launcher for window switching, app launcher, etc.
 - Vim: *Text editor*
 
 ## Widgets
 
 - Awesome Menu
-- CPU
-- Memory
-- Network
-- Spotify status
-- Volume
-- Brightness
-- Battery
-- Clock
-- Weather
-- Do not disturb toggle
+- CPU: From [awesome-wm-widgets repository](https://github.com/streetturtle/awesome-wm-widgets/tree/master/cpu-widget), displays a history chart with top processes.
+- Memory: Since the CPU widget also contains memory information, the memory widget is kept very simple. Memory usage from the `free` command.
+- Network: [net-widgets](https://github.com/pltanton/net_widgets) that are modified to focus on most laptop wireless modules.
+- Spotify status: Grabs information from Python script that was inspired by [polybar-spotify](https://github.com/Jvanrhijn/polybar-spotify). Offers a little less functionality than the original widget, but it does not require a dependency other than `dbus` (and Python and Spotify I guess).
+- Volume: Calculates the volume from PulseAudio `pactl` command. The widget is simple enough to support multiple audio mixers, and the support for `amixer` is coming.
+- Brightness: Inspired by [awesome-wd-widgets brightness widget](https://github.com/streetturtle/awesome-wm-widgets/tree/master/brightness-widget), but modified to display accurate percentage when `brightnessctl` is used.
+- Battery: Inner mechanism is from [battery widget by deficient](https://github.com/deficient/battery-widget), modified to fit the theme of Hunted Tiles.
+- Clock: When clicked, a pop-up calendar is displayed.
+- Weather: Grabs the text weather report from (wttr.in)[wttr.in].
+- Do not disturb toggle: Pause the notification using the Awesome API module.
+
+## User Customization
 
 ## Goal
 
@@ -50,7 +56,7 @@ Hunted Tiles is a aspiring desktop environment built with [Awesome WM framework]
 - [ ] Sane keyboard shortcuts
   - [ ] Confirmation before quit or reload
 - [ ] Consistent and simple widgets
-  - [ ] Brightness & volume
+  - [ ] Brightness, volume, battery
   - [ ] CPU, memory, temperature
   - [X] Network
   - [X] Calendar, weather, Spotify status
@@ -62,4 +68,3 @@ Hunted Tiles is a aspiring desktop environment built with [Awesome WM framework]
   - [ ] Vim quick note
   - [ ] Terminal emulator, TUI file browser
 - [ ] Safe and clean installation script
-
