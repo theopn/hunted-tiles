@@ -14,13 +14,13 @@ local mymemory = require("widgets.memory")
 
 local myspotify = require("widgets.spotify")
 local myvolume = require("widgets.volume")
-local mybrightness = require("widgets.brightness") {
-  type = "arc",
-  program = "brightnessctl",
-  step = 10,
-  timeout = 1,
-  percentage = true,
-}
+--local mybrightness = require("widgets.brightness") {
+--  type = "arc",
+--  program = "brightnessctl",
+--  step = 10,
+--  timeout = 1,
+--  percentage = true,
+--}
 local mybrightness = require("widgets.brightness-test") {}
 local mybattery = require("widgets.battery") {}
 local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0", popup_position = "top_middle", }

@@ -7,7 +7,7 @@ awful.layout.layouts = {
   --awful.layout.suit.tile.top, --> Tile but main is on the bottom
   awful.layout.suit.fair, --> Four windows divide screen evenly, can't resize
   --awful.layout.suit.fair.horizontal, --> Same as fair, but two windows are horizontally placed
-  --awful.layout.suit.floating, --> Floating
+  awful.layout.suit.floating, --> Floating
   --awful.layout.suit.magnifier, --> One floating window on the top
   --awful.layout.suit.corner.nw, --> Main window on the top left, other's surrounding it
   --awful.layout.suit.corner.ne,

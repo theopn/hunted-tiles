@@ -7,7 +7,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
@@ -42,16 +41,8 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- notification_font
 theme.notification_bg = "#282a36"
 theme.notification_fg = "#f8f8f2"
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
-
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path .. "default/submenu.png"
-theme.menu_height       = dpi(20)
-theme.menu_width        = dpi(100)
+theme.menu_height     = dpi(20)
+theme.menu_width      = dpi(100)
 
 theme.wallpaper = gfs.get_configuration_dir() .. "themes/wallpaper.png"
 

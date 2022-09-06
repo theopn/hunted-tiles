@@ -46,7 +46,9 @@ globalkeys = gears.table.join(
     { description = "Launch Vim Quick Note", group = "Theo Custom Settings" }),
 
   awful.key({ modkey, "Shift" }, "c", function() awful.util.spawn(powermenu) end,
-    { description = "Open power menu", group = "awesome" }),
+    { description = "Open Power Menu", group = "awesome" }),
+  awful.key({ modkey, "Control" }, "r", function() mymainmenu:show() end,
+    { description = "Open Awesome Main Menu", group = "awesome" }),
   -- }}}
 
   -- {{{ Unmodified Keybindings
@@ -97,8 +99,6 @@ globalkeys = gears.table.join(
   -- Standard program
   awful.key({ modkey, }, "Return", function() awful.spawn(terminal) end,
     { description = "open a terminal", group = "launcher" }),
-  awful.key({ modkey, "Control" }, "r", awesome.restart,
-    { description = "reload awesome", group = "awesome" }),
 
   awful.key({ modkey, }, "l", function() awful.tag.incmwfact(0.05) end,
     { description = "increase master width factor", group = "layout" }),

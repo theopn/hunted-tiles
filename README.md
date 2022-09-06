@@ -1,12 +1,15 @@
 # Hunted Tiles
 
+![Hunted Tiles Image](./assets/hunted-tiles_screenshot.png)
+
 Hunted Tiles is a custom Linux window manager environment built with [Awesome WM framework](https://awesomewm.org/) and other tools surrounding the X11 window server. The goal of Hunted Tiles is a complete, lightweight, and aesthetically pleasing desktop environment that provides users freedom of dependency choice and an easily modifiable code base. The name “Hunted Tiles” was inspired by my favorite color scheme (and the main theme of Hunted Tiles), [Dracula](https://draculatheme.com), and the fact that AwesomeWM is a tiling WM.
+
+
+## Keybindings
 
 ## Aesthetics
 
 The central theme of Hunted Tiles is heavily inspired by the [Dracula color palette](https://draculatheme.com/contribute). The artworks (wallpaper and the icon) were done by Naomi Lynn (thanks Naomi)!
-
-## Screenshots
 
 ## Dependencies
 
