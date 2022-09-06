@@ -29,7 +29,7 @@ local net_widget = require("widgets.net-widgets.wireless") { interface = "wlp4s0
 local myclock = require("widgets.clock")
 local myweather = require("widgets.weather")
 local mydnd = require("widgets.do_not_disturb")
-local mypower = require("widgets.power_menu")
+local mypower = require("widgets.power_menu") {}
 --}}}
 
 -- {{{ Wibar
